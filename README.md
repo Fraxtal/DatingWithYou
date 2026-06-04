@@ -35,17 +35,6 @@ Deployed on Netlify: [https://datingwithu.netlify.app/](https://datingwithu.netl
 
 ---
 
-## Running it locally
-
-\`\`\`bash
-npm install
-npm run dev
-\`\`\`
-
-Then open `http://localhost:5173` in your browser.
-
----
-
 ## Disclaimer
 
 This project has no roadmap, no issues tracker, and no grand vision. It was made on a whim and exists purely for the joy of making something small and fun. Use it to ask someone out, or don't. Either way, I hope it made you smile. 🌹
