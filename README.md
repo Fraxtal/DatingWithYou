@@ -29,6 +29,12 @@ No external UI libraries. All styling is hand-rolled CSS.
 
 ---
 
+## Live demo
+
+Deployed on Netlify: [https://datingwithu.netlify.app/](https://datingwithu.netlify.app/)
+
+---
+
 ## Running it locally
 
 \`\`\`bash
