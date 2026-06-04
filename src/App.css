@@ -1,0 +1,605 @@
+/* ── Variables ─────────────────────────────────────────────────── */
+:root {
+  --rose:        #e8537a;
+  --rose-dark:   #c9184a;
+  --rose-light:  #ff85a1;
+  --blush:       #ffc2d4;
+  --blush-light: #ffd6e0;
+  --ivory:       #fff5f7;
+  --text-dark:   #4a1428;
+  --text-mid:    #7d3354;
+  --text-soft:   #b56585;
+}
+
+/* ── App shell ─────────────────────────────────────────────────── */
+.app {
+  min-height: 100vh;
+  background: #fdf6f8;
+  font-family: 'Lato', sans-serif;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* ── Page wrapper & transitions ────────────────────────────────── */
+.page-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 16px;
+  position: relative;
+  z-index: 1;
+}
+
+.page-enter {
+  animation: pgEnter 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.page-exit {
+  animation: pgExit 0.35s ease-in forwards;
+  pointer-events: none;
+}
+
+@keyframes pgEnter {
+  from { opacity: 0; transform: translateY(36px) scale(0.96); }
+  to   { opacity: 1; transform: translateY(0)    scale(1);    }
+}
+
+@keyframes pgExit {
+  from { opacity: 1; transform: translateY(0)     scale(1);    }
+  to   { opacity: 0; transform: translateY(-24px) scale(0.97); }
+}
+
+.page {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── Card base ─────────────────────────────────────────────────── */
+.card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 52px 44px;
+  width: 100%;
+  max-width: 520px;
+  box-shadow: 0 2px 16px rgba(232, 83, 122, 0.08);
+  border: 1px solid #f5dde4;
+  text-align: center;
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   PAGE 1 – THE BIG QUESTION
+   ══════════════════════════════════════════════════════════════════ */
+
+.card-emoji-top {
+  font-size: 3.6rem;
+  display: block;
+  margin-bottom: 18px;
+  animation: heartbeat 1.6s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1);    }
+  20%       { transform: scale(1.22); }
+  40%       { transform: scale(1.10); }
+}
+
+.question-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.75rem, 5.5vw, 2.7rem);
+  font-weight: 700;
+  color: var(--text-dark);
+  line-height: 1.28;
+  margin: 0 0 12px;
+}
+
+.question-subtitle {
+  font-size: 1.05rem;
+  color: var(--text-soft);
+  font-style: italic;
+  margin-bottom: 44px;
+}
+
+.button-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+
+/* ── Button base ───────────────────────────────────────────────── */
+.btn {
+  border: none;
+  cursor: pointer;
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  border-radius: 50px;
+  transition: all 0.2s ease;
+  letter-spacing: 0.4px;
+  line-height: 1;
+}
+
+/* Yes button */
+.btn-yes {
+  background: linear-gradient(135deg, var(--rose-light), var(--rose));
+  color: #fff;
+  font-size: 1.35rem;
+  padding: 20px 60px;
+  animation: glowPulse 2.2s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 4px 20px rgba(232,83,122,0.45), 0 0 0 0 rgba(232,83,122,0.35); }
+  50%       { box-shadow: 0 6px 30px rgba(232,83,122,0.65), 0 0 0 10px rgba(232,83,122,0.0); }
+}
+
+.btn-yes:hover {
+  background: linear-gradient(135deg, #ff6b9d, var(--rose-dark));
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 10px 32px rgba(232,83,122,0.6);
+}
+.btn-yes:active {
+  transform: translateY(-1px) scale(1.02);
+}
+
+/* Maybe later button */
+.btn-maybe {
+  background: transparent;
+  color: var(--text-soft);
+  font-size: 0.85rem;
+  font-weight: 400;
+  padding: 10px 24px;
+  border: 1.5px solid var(--blush);
+  opacity: 0.65;
+}
+.btn-maybe:hover {
+  background: var(--blush-light);
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   PAGE 2 – THE DATE PLANNER
+   ══════════════════════════════════════════════════════════════════ */
+
+.planner-card {
+  max-width: 620px;
+  text-align: left;
+  padding: 44px 40px 48px;
+}
+
+.planner-header {
+  text-align: center;
+  margin-bottom: 36px;
+}
+
+.party-emoji {
+  font-size: 2.6rem;
+  display: block;
+  margin-bottom: 12px;
+  animation: bounceUp 1s ease-in-out infinite;
+}
+
+@keyframes bounceUp {
+  0%, 100% { transform: translateY(0);   }
+  50%       { transform: translateY(-9px); }
+}
+
+.page-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.4rem, 4.5vw, 2.1rem);
+  font-weight: 700;
+  color: var(--text-dark);
+  margin: 0 0 8px;
+}
+
+.page-subtitle {
+  color: var(--text-soft);
+  font-size: 1rem;
+  font-style: italic;
+}
+
+.form-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.form-label {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--text-mid);
+  display: block;
+}
+
+.form-hint {
+  font-size: 0.82rem;
+  color: var(--text-soft);
+  font-style: italic;
+  margin: -6px 0 2px;
+}
+
+/* Activity grid */
+.activity-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 10px;
+}
+
+.activity-card {
+  background: var(--ivory);
+  border: 2px solid var(--blush-light);
+  border-radius: 16px;
+  padding: 14px 10px 12px;
+  cursor: pointer;
+  font-family: 'Lato', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.activity-card:hover {
+  border-color: var(--rose-light);
+  background: var(--blush-light);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(232,83,122,0.15);
+}
+
+.activity-card.selected {
+  border-color: var(--rose);
+  background: linear-gradient(135deg, #ffe0e8, #ffc2d4);
+  box-shadow: 0 4px 16px rgba(232,83,122,0.22);
+}
+
+.activity-emoji {
+  font-size: 1.9rem;
+  line-height: 1;
+}
+
+.activity-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-mid);
+  text-align: center;
+  line-height: 1.25;
+}
+
+.activity-card.selected .activity-label {
+  color: var(--rose-dark);
+}
+
+.activity-check {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  font-size: 0.72rem;
+  font-weight: 900;
+  color: var(--rose-dark);
+  line-height: 1;
+}
+
+/* Inputs */
+.custom-input,
+.datetime-input,
+.textarea-input {
+  width: 100%;
+  padding: 13px 16px;
+  border: 2px solid var(--blush);
+  border-radius: 14px;
+  font-family: 'Lato', sans-serif;
+  font-size: 0.95rem;
+  color: var(--text-dark);
+  background: var(--ivory);
+  outline: none;
+  transition: border-color 0.2s, background 0.2s;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.custom-input:focus,
+.datetime-input:focus,
+.textarea-input:focus {
+  border-color: var(--rose-light);
+  background: #fff;
+}
+
+.custom-input::placeholder,
+.textarea-input::placeholder {
+  color: var(--text-soft);
+}
+
+.textarea-input {
+  resize: vertical;
+  min-height: 84px;
+}
+
+/* Custom input slide-in */
+.custom-input-enter {
+  animation: slideDown 0.25s ease forwards;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+/* Step indicator */
+.step-indicator {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.step-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--blush-light);
+  border: 2px solid var(--blush);
+  transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+}
+
+.step-dot.active {
+  background: var(--rose);
+  border-color: var(--rose);
+  transform: scale(1.35);
+}
+
+.step-dot.done {
+  background: var(--blush);
+  border-color: var(--rose-light);
+}
+
+/* Step content & slide animations */
+.step-content {
+  min-height: 210px;
+  margin-bottom: 26px;
+  overflow: hidden;
+}
+
+.step-enter-right {
+  animation: stepEnterRight 0.32s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.step-enter-left {
+  animation: stepEnterLeft 0.32s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.step-exit-left {
+  animation: stepExitLeft 0.22s ease-in forwards;
+}
+
+.step-exit-right {
+  animation: stepExitRight 0.22s ease-in forwards;
+}
+
+@keyframes stepEnterRight {
+  from { opacity: 0; transform: translateX(36px); }
+  to   { opacity: 1; transform: translateX(0);    }
+}
+
+@keyframes stepEnterLeft {
+  from { opacity: 0; transform: translateX(-36px); }
+  to   { opacity: 1; transform: translateX(0);     }
+}
+
+@keyframes stepExitLeft {
+  from { opacity: 1; transform: translateX(0);     }
+  to   { opacity: 0; transform: translateX(-28px); }
+}
+
+@keyframes stepExitRight {
+  from { opacity: 1; transform: translateX(0);    }
+  to   { opacity: 0; transform: translateX(28px); }
+}
+
+/* Step navigation row */
+.step-nav {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.btn-back {
+  background: transparent;
+  color: var(--text-soft);
+  font-size: 0.88rem;
+  padding: 13px 22px;
+  border: 2px solid var(--blush);
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+.btn-back:hover {
+  background: var(--blush-light);
+  color: var(--text-mid);
+  border-color: var(--blush);
+}
+
+.step-nav .btn-submit {
+  flex: 1;
+}
+
+/* Submit button */
+.btn-submit {
+  background: linear-gradient(135deg, var(--rose-light), var(--rose));
+  color: #fff;
+  font-size: 1.1rem;
+  padding: 17px 40px;
+  width: 100%;
+  box-shadow: 0 4px 20px rgba(232,83,122,0.35);
+}
+
+.btn-submit:hover:not([disabled]) {
+  background: linear-gradient(135deg, #ff6b9d, var(--rose-dark));
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px rgba(232,83,122,0.5);
+}
+
+.btn-submit[disabled] {
+  opacity: 0.48;
+  cursor: not-allowed;
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   PAGE 3 – SWEET CONFIRMATION
+   ══════════════════════════════════════════════════════════════════ */
+
+.page-3 {
+  position: relative;
+  min-height: 100vh;
+}
+
+/* Confetti */
+.confetti-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.confetti-piece {
+  position: absolute;
+  top: -24px;
+  animation: confFall linear infinite;
+}
+
+@keyframes confFall {
+  0%   { transform: translateY(-24px) rotate(0deg) skewX(0deg);   opacity: 1; }
+  80%  { opacity: 1; }
+  100% { transform: translateY(115vh) rotate(780deg) skewX(25deg); opacity: 0; }
+}
+
+/* Floating hearts page 3 */
+.hearts-layer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.heart-rise {
+  position: absolute;
+  bottom: -60px;
+  user-select: none;
+  animation: heartRise ease-in-out infinite;
+}
+
+@keyframes heartRise {
+  0%   { transform: translateY(0)      scale(0.6); opacity: 0;   }
+  12%  { opacity: 1; }
+  88%  { opacity: 0.75; }
+  100% { transform: translateY(-115vh) scale(1.2); opacity: 0;   }
+}
+
+/* Confirmation card */
+.confirmation-card {
+  max-width: 520px;
+  padding: 56px 44px 52px;
+  position: relative;
+  z-index: 1;
+}
+
+.confirm-badge {
+  font-size: 4rem;
+  display: block;
+  margin-bottom: 18px;
+  animation: spinIn 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes spinIn {
+  from { transform: scale(0) rotate(-200deg); opacity: 0; }
+  to   { transform: scale(1) rotate(0deg);   opacity: 1; }
+}
+
+.confirm-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 6.5vw, 3.1rem);
+  font-weight: 700;
+  color: var(--rose-dark);
+  margin: 0 0 28px;
+}
+
+.date-summary-box {
+  background: linear-gradient(135deg, #fff0f3, #ffd6e0);
+  border: 1.5px solid var(--blush);
+  border-radius: 20px;
+  padding: 22px 24px;
+  margin-bottom: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  text-align: left;
+}
+
+.summary-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.summary-icon {
+  font-size: 1.2rem;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.summary-text {
+  font-size: 0.97rem;
+  color: var(--text-dark);
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+.summary-sep {
+  width: 100%;
+  height: 1px;
+  background: rgba(232,83,122,0.15);
+}
+
+.confirm-message {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.55rem;
+  font-style: italic;
+  color: var(--rose);
+  margin: 0 0 8px;
+}
+
+.confirm-sub {
+  color: var(--text-soft);
+  font-size: 0.93rem;
+}
+
+/* ── Responsive ────────────────────────────────────────────────── */
+@media (max-width: 520px) {
+  .card {
+    padding: 40px 22px;
+    border-radius: 22px;
+  }
+
+  .planner-card {
+    padding: 36px 20px 44px;
+  }
+
+  .activity-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .btn-yes {
+    padding: 18px 44px;
+    font-size: 1.2rem;
+  }
+
+  .confirmation-card {
+    padding: 44px 22px 44px;
+  }
+}
